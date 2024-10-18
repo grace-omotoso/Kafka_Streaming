@@ -2,10 +2,9 @@
 import logging
 
 import confluent_kafka
-from confluent_kafka import Consumer
+from confluent_kafka import Consumer, OFFSET_BEGINNING
 from confluent_kafka.avro import AvroConsumer
 from confluent_kafka.avro.serializer import SerializerError
-from confluent_kafka.cimpl import OFFSET_BEGINNING
 from tornado import gen
 
 
@@ -41,7 +40,8 @@ class KafkaConsumer:
         #
         self.broker_properties = {
             "bootstrap.servers" : BROKER_URL,
-            "group.id" : topic_name_pattern
+            "group.id" : topic_name_pattern,
+            "default.topic.config": {"auto.offset.reset": "earliest" if self.offset_earliest else "latest"}
         }
 
         # TODO: Create the Consumer, using the appropriate type.
