@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "weather_event",
+  "namespace": "org.cta",
+  "fields": [
+    {
+      "name": "temperature",
+      "type": "float"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    }
+  ]
+}
