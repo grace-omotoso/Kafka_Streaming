@@ -28,7 +28,7 @@ class Station(Producer):
         )
 
        
-        topic_name = "org.cta.station.arrivals" 
+        topic_name = "{station_name}.arrivals"
         super().__init__(
             topic_name,
             key_schema=Station.key_schema,
